@@ -1,0 +1,184 @@
+/**
+* Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+* http://cssreset.com
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*************************/
+body {
+    background-color: whitesmoke;
+    height: 100%;
+    width: 100%;
+    font-family: arial;
+}
+
+body > header {
+    background-color: GoldenRod;
+    height: 2rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+body > header > h1 {
+    display: inline-block;
+    color: white;
+    font-size: 1.8rem;
+    margin-right: 1rem;
+}
+
+body > header > nav {
+    height: 100%;
+    display: inline-block;
+    line-height: 2rem;
+    margin-left: 1rem;
+}
+
+body > header > nav li{
+    height: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+body > header > nav li a{
+    display: inline-block;
+    text-decoration: none;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    color: white;
+    height: 100%;
+    margin-top: 0;
+}
+
+body > header > nav a:hover{
+    background-color:   DarkGoldenRod ;
+}
+
+.calendar {
+    width: 800px;
+    margin: auto;
+    padding-top: 3rem;
+    padding-bottom: 20px;
+    height: 800px;
+    overflow: scroll;
+}
+
+/******* HEADER **********/
+.calendar header {
+    padding-top: 1rem;
+    display: inline-block;
+    width: 50px;
+    background-color: white;
+    text-align: center;
+    margin-right: 1rem;
+    margin-top: -1rem;
+    border-right: 0.05rem solid lightgray;
+    border-left: 0.05rem solid lightgray;
+}
+
+.calendar header .time{
+    position: relative;
+    display: inline-block;
+    height: 27px;
+    width: 100%;
+    color: gray;
+}
+
+.calendar header .time:nth-child(odd) {
+    color: gray;
+}
+
+.calendar header .time:nth-child(even) {
+    font-size: 10px;
+    color: lightgray;
+}
+
+/******** DAY **********/
+.calendar #day {
+    display: inline-block;
+    position: relative;
+    width: 750px;
+    top: -1450px;
+    left: 50px;
+}
+
+.calendar #day .event{
+    position: absolute;
+    display: inline-block;
+    float: left;
+    z-index: 10;
+    background-color: white;
+    border: 1px solid silver;
+    border-left: 5px solid gold;
+}
+
+.calendar #day .event:hover{
+    border: 1px solid darkgray;
+    border-left: 5px solid gold;
+    cursor: pointer
+}
+
+#day .event .itemTitle,
+#day .event .itemLocation{
+    margin-left: 5px;
+}
+
+#day .event .itemTitle{
+    margin-top: 5px;
+    color: gray;
+}
+
+.calendar #day .event:hover .itemTitle{
+    color: black;
+}
+
+#day .event .itemLocation{
+    font-size: 10px;
+    color: silver;
+}
+
+.calendar #day .event:hover .itemLocation{
+    color: darkgray;
+}
