@@ -47,6 +47,10 @@ table {
 }
 
 /*************************/
+html{
+    height: 100%;
+}
+
 body {
     background-color: whitesmoke;
     height: 100%;
@@ -93,29 +97,49 @@ body > header > nav li a{
 }
 
 body > header > nav a:hover{
-    background-color:   DarkGoldenRod ;
+    background-color:   DarkGoldenRod;
+}
+
+.day{
+    width: 60%;
+    min-width: 400px;
+    max-width: 700px;
+    margin: 0;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.day header {
+    height:2rem;
+    padding-top: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.day header h1{
+    font-size: 1.5rem;
+    border-radius: 0.2rem;
+    background-color: lightgray;
+    color: whitesmoke;
+    text-align: center;
+    height: 2rem;
+    line-height: 1.9rem;
 }
 
 .calendar {
-    width: 800px;
-    margin: auto;
-    padding-top: 3rem;
-    padding-bottom: 20px;
-    height: 800px;
+    width: 100%;
+    height: -moz-calc(100% - 6rem);
     overflow: scroll;
+    background-color: white;
+    border-radius: 0.2rem;
+    border: 0.05rem solid silver;
 }
 
 /******* HEADER **********/
 .calendar header {
-    padding-top: 1rem;
     display: inline-block;
     width: 50px;
-    background-color: white;
     text-align: center;
     margin-right: 1rem;
-    margin-top: -1rem;
-    border-right: 0.05rem solid lightgray;
-    border-left: 0.05rem solid lightgray;
 }
 
 .calendar header .time{
@@ -139,9 +163,8 @@ body > header > nav a:hover{
 .calendar #day {
     display: inline-block;
     position: relative;
-    width: 750px;
     top: -1450px;
-    left: 50px;
+    left: 0px;
 }
 
 .calendar #day .event{

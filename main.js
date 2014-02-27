@@ -5,7 +5,7 @@
         groups = [],
         columns = [];
 
-    window.layOutDay = function (input) {
+    window.showElements = function (input) {
 
         events = input;
 
@@ -215,12 +215,11 @@
 
     //display events on the page
     var displayEvent = function (event) {
-
-
         var day = document.getElementById('day');
 
         var item = document.createElement('div');
         item.className = 'event';
+        item.style.borderLeft = "5px solid "+event.color;
 
         var item_title = document.createElement('div');
         item_title.textContent = event.title;
@@ -241,36 +240,39 @@
 
 
     document.addEventListener('DOMContentLoaded',function () {
-        layOutDay([ {
-            start: 400,
-            end: 470,
-            location: "Paris",
-            title: "Open source Meetup"
+        showElements([ {
+            "start": 400,
+            "end": 470,
+            "location": "Paris",
+            "title": "Open source Meetup",
+            "color":"red"
         },
         {
             start: 640,
             end: 800,
             location: "London",
-            title: "Squash"
+            title: "Squash",
+            "color":"blue"
         },
         {
             start: 860,
             end: 920,
             location: "Madrid",
-            title: "Beer Party"
+            title: "Beer Party",
+            "color":"yellow"
         },
         {
             start: 610,
             end: 670,
             location: "Geneva",
-            title: "Technical Meeting"
+            title: "Technical Meeting",
+            "color":"green"
         } ]);
 
         document.getElementsByClassName("calendar")[0].scrollTop = 400;
-        console.log(document.getElementsByClassName("calendar")[0].scrollTop);
-        //layOutDay([ {start: 30, end: 150}, {start: 540, end: 700}, {start: 100, end: 550}, {start: 610, end: 670}]);
-        //layOutDay ([ {start: 90, end: 150},{start: 120, end: 180},{start: 30, end: 60},
+        //showElements([ {start: 30, end: 150}, {start: 540, end: 700}, {start: 100, end: 550}, {start: 610, end: 670}]);
+        //showElements ([ {start: 90, end: 150},{start: 120, end: 180},{start: 30, end: 60},
             //{start: 34, end: 60}, {start: 80, end: 400}, {start: 40, end: 600}, {start: 280, end: 620}, {start: 610, end: 670} ]);
-        //layOutDay ([ {start: 30, end: 640}, {start: 34, end: 60}, {start: 80, end: 400}, {start: 40, end: 600}, {start: 280, end: 620}, {start: 610, end: 670} ]);
+        //showElements ([ {start: 30, end: 640}, {start: 34, end: 60}, {start: 80, end: 400}, {start: 40, end: 600}, {start: 280, end: 620}, {start: 610, end: 670} ]);
     });
 })();
