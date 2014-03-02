@@ -6,7 +6,6 @@
         columns = [];
 
     window.showElements = function (input) {
-
         events = input;
 
         // Delete old events
@@ -218,6 +217,7 @@
         var day = document.getElementById('day');
 
         var item = document.createElement('div');
+        item.id = event.id;
         item.className = 'event';
         item.style.borderLeft = "5px solid "+event.color;
 
@@ -231,6 +231,10 @@
         item_location.className = "itemLocation";
         item.appendChild(item_location);
 
+        item.addEventListener("click", function(){
+            modifyEvent(event);
+        });
+
         item.style.top = event.start + 'px';
         item.style.left = event.left + 'px';
         item.style.width = event.width - 6 + 'px';
@@ -238,18 +242,72 @@
         day.appendChild(item);
     };
 
+    var saveEvent = function (event) {
+
+    };
+
+    var saveAllEvents = function (eventArray) {
+        for (var i = 0 ; i < eventArray.length ; i++){
+            eventArray.id = i;
+            localStorage.setItem(i, JSON.stringify(eventArray[i]));
+        };
+    };
+
+    var getEvents = function () {
+        if (!localStorage){
+            alert("Your browser don't support localstorage. Please update it before using OneDayCalender");
+        }else{
+            var events = [];
+            for (var key in localStorage){
+                events.push(JSON.parse(localStorage.getItem(key)));
+            }
+            showElements(events);
+        }
+    };
+
+    var modifyEvent = function (event) {
+        console.log("modifyEvent : ",event);
+    };
+
+    var addEvent = function() {
+        console.log("add Event");
+    };
+
+    var eventsHandler = function() {
+        document.getElementById("addEvent").addEventListener("click", function(){
+            addEvent();
+        });
+
+        document.getElementById("removeAllEvents").addEventListener("click", function(){
+            removeAllEvents();
+        })
+    };
+
+    var removeAllEvents = function() {
+        localStorage.clear();
+
+        var eventContainer = document.getElementById('day');
+        while (eventContainer.firstChild) {
+          eventContainer.removeChild(eventContainer.firstChild);
+        };
+    }
+
 
     document.addEventListener('DOMContentLoaded',function () {
-        showElements([ {
-            "start": 400,
-            "end": 470,
+        // Add events to page
+        eventsHandler();
+
+        var events = [
+        {
+            "start": 0,
+            "end": 60,
             "location": "Paris",
             "title": "Open source Meetup",
             "color":"red"
         },
         {
-            start: 640,
-            end: 800,
+            start: 600,
+            end: 660,
             location: "London",
             title: "Squash",
             "color":"blue"
@@ -267,7 +325,14 @@
             location: "Geneva",
             title: "Technical Meeting",
             "color":"green"
-        } ]);
+        }
+        ];
+
+        saveAllEvents(events);
+        getEvents();
+
+        // Load events in calendar
+        //showElements(events);
 
         document.getElementsByClassName("calendar")[0].scrollTop = 400;
         //showElements([ {start: 30, end: 150}, {start: 540, end: 700}, {start: 100, end: 550}, {start: 610, end: 670}]);
